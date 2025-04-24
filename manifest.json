@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Plutus",
+    "version": "1.0.0",
+    "description": "A simple Chrome extension to save you money.",
+    "permissions": ["storage", "activeTab", "scripting"],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts" : [
+        {
+            "matches": ["https://www.amazon.com/*"],
+            "js": ["content.js"],
+            "py": ["data.py"] 
+        }
+    ]
+}

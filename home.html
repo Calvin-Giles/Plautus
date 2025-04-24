@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Plutus</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+        <h1>Plutus</h1>
+      
+        <div id="customer_information">
+                    
+            <h2>Customer Information</h2>
+            <form action="./index.php" method="post">
+                <input type='hidden' name="action" value="update_customer_info">
+                <input type='hidden' name="customer_id" value="">
+                <span>
+                    <label for="first_name">First name:</label>
+                    <input type="text" name="first_name" value="optional" onfocus="this.value=''"></input>
+                </span>
+                <span>
+                    <label for="years">Years until retirement:</label>
+                    <input type="text" name="years"></input>
+                </span>
+                <span>
+                    <label for="goal">Goal for retirement: </label>
+                    <input type="text" id="goal" name="goal" value="$ amount" onfocus="this.value=''"></input>
+                </span>
+                <span>
+                    <label for="CAGR">CAGR: </label>
+                    <input type="text" id="CAGR" name="CAGR" value="% amount" onfocus="this.value=''"></input>
+                </span>
+                    <label>&nbsp;</label>
+                    <input type="submit" id="update_cust_info" value="Update">
+            </form>
+            
+        </div>
+        
+        <h3>Temp Links:</h3>
+        <a href="createAccount.html">Create account</a><br>
+        <a href="login.html">Login</a><br>
+        <a href="home.html">home</a><br>
+        <script src="" async defer></script>
+        <script src="" async defer></script>
+    </body>
+</html>
