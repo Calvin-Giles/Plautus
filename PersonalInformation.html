@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plutus Application - Personal Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        .form-group label {
+            width: 200px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .cagr-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cagr-group input {
+            width: 60px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto 0;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plutus Application: Personal Information</h1>
+        
+        <div class="form-group">
+            <label for="age">Current Age:</label>
+            <input type="number" id="age" placeholder="Enter your current age">
+        </div>
+        
+        <div class="form-group">
+            <label for="income">Annual Income:</label>
+            <input type="number" id="income" placeholder="Enter your annual income">
+        </div>
+        
+        <div class="form-group">
+            <label for="yearsToRetirement">Years until Retirement:</label>
+            <input type="number" id="yearsToRetirement" placeholder="Years until retirement">
+        </div>
+        
+        <div class="form-group">
+            <label for="retirementGoal">Retirement Goal:</label>
+            <input type="number" id="retirementGoal" placeholder="Your retirement goal amount">
+        </div>
+        
+        <div class="form-group">
+            <label for="cagr">Compound Annual Growth Rate (CAGR):</label>
+            <div class="cagr-group">
+                <input type="number" id="cagr" placeholder="CAGR">
+                <span>%</span>
+                <select id="riskProfile">
+                    <option value="">Select Risk Profile</option>
+                    <option value="conservative">Conservative (3-4%)</option>
+                    <option value="moderate">Moderate (5-6%)</option>
+                    <option value="aggressive">Aggressive (7-8%)</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="monthlySaving">Monthly Saving:</label>
+            <input type="number" id="monthlySaving" placeholder="Monthly savings amount">
+        </div>
+        
+        <div class="form-group">
+            <label for="initialInvestment">Initial Investment:</label>
+            <input type="number" id="initialInvestment" placeholder="Initial investment amount">
+        </div>
+        
+        <button id="saveButton">Save Information</button>
+    </div>
+
+    <script>
+        // Handle risk profile selection
+        document.getElementById('riskProfile').addEventListener('change', function() {
+            const cagrField = document.getElementById('cagr');
+            switch(this.value) {
+                case 'conservative':
+                    cagrField.value = '3.5';
+                    break;
+                case 'moderate':
+                    cagrField.value = '5.5';
+                    break;
+                case 'aggressive':
+                    cagrField.value = '7.5';
+                    break;
+                case 'custom':
+                    cagrField.value = '';
+                    cagrField.focus();
+                    break;
+            }
+        });
+
+        // Handle save button click
+        document.getElementById('saveButton').addEventListener('click', function() {
+            try {
+                // Get all field values
+                const age = parseInt(document.getElementById('age').value);
+                const income = parseFloat(document.getElementById('income').value);
+                const yearsToRetirement = parseInt(document.getElementById('yearsToRetirement').value);
+                const retirementGoal = parseFloat(document.getElementById('retirementGoal').value);
+                const cagr = parseFloat(document.getElementById('cagr').value);
+                const monthlySaving = parseFloat(document.getElementById('monthlySaving').value);
+                const initialInvestment = parseFloat(document.getElementById('initialInvestment').value);
+                const riskProfile = document.getElementById('riskProfile').value;
+
+                // Validate inputs
+                if (isNaN(age) || isNaN(income) || isNaN(yearsToRetirement) || 
+                    isNaN(retirementGoal) || isNaN(cagr) || isNaN(monthlySaving) || 
+                    isNaN(initialInvestment)) {
+                    throw new Error("Please enter valid numbers in all fields");
+                }
+
+                // Show success message
+                alert(`Personal information saved successfully!\nWe'll use a CAGR of ${cagr}% for your projections.`);
+                
+                // Here you would typically send data to server
+                // sendDataToServer({ age, income, yearsToRetirement, retirementGoal, cagr, monthlySaving, initialInvestment, riskProfile });
+
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        // Function to send data to server (would be implemented with fetch API)
+        function sendDataToServer(data) {
+            console.log("Data to be sent to server:", data);
+            /* Actual implementation would look like:
+            fetch('/api/personal-info', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            */
+        }
+    </script>
+</body>
+</html>
