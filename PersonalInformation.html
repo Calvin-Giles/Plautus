@@ -3,119 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plutus Application - Personal Information</title>
+    <title>Plutus | Personal Information</title>
+    <link rel="stylesheet" href="index.css">
     <style>
+        /* Override body overflow from index.css */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f5f5f5;
+            overflow: auto;
         }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 0 auto;
+
+        /* Personal info page styles */
+        .personal_info_page {
+            position: relative;
+            width: 850px;
+            height: auto;
+            min-height: 400px;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 25px;
+            margin: 20px auto;
+            background-color: #7d7d7d;
+            border-radius: 1.5%;
+            color: #f0f0f0;
+            border: 0.5px solid black;
         }
-        h1 {
+
+        .personal_info_page h2 {
+            font-size: 2em;
             text-align: center;
-            color: #2c3e50;
-            margin-bottom: 30px;
+            padding: 0 0 20px 0;
+            border-bottom: 1px solid black;
+            margin-top: 0;
         }
+
         .form-group {
             display: flex;
             margin-bottom: 15px;
             align-items: center;
         }
+
         .form-group label {
             width: 200px;
             font-weight: bold;
+            color: #f0f0f0;
         }
-        .form-group input, .form-group select {
+
+        .form-group input, 
+        .form-group select {
             flex: 1;
             padding: 8px;
-            border: 1px solid #ddd;
+            border: 1px solid #555;
             border-radius: 4px;
+            background-color: #f0f0f0;
         }
+
         .cagr-group {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .cagr-group input {
             width: 60px;
         }
-        button {
-            background-color: #3498db;
+
+        button[type="submit"] {
+            width: 100%;
+            height: 50px;
+            border: 1px solid;
+            background-color: #2691d9;
+            border-radius: 15px;
+            font-size: 16px;
+            color: #e9f4fb;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        /* Calculation results modal */
+        .calculation-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            background-color: #7d7d7d;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 100;
+            border: 1px solid #555;
+        }
+
+        .calculation-modal h3 {
+            margin-top: 0;
+            color: #f0f0f0;
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+        }
+
+        .calculation-results {
+            margin: 20px 0;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #555;
+        }
+
+        .result-label {
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+
+        .result-value {
+            font-weight: bold;
+            color: #060f15;
+        }
+
+        .close-modal {
+            background-color: #2691d9;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            display: block;
-            margin: 30px auto 0;
+            float: right;
         }
-        button:hover {
+
+        .close-modal:hover {
             background-color: #2980b9;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 50;
+        }
+
+        /* Scrollbar styling  */
+        .personal_info_page::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .personal_info_page::-webkit-scrollbar-track {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .personal_info_page::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .personal_info_page::-webkit-scrollbar-thumb:hover {
+            background: #333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Plutus Application: Personal Information</h1>
+    <header>
+        <h1>Plutus</h1>
+    </header>
+
+    <main class="personal_info_page">
+        <h2>Personal Information</h2>
         
-        <div class="form-group">
-            <label for="age">Current Age:</label>
-            <input type="number" id="age" placeholder="Enter your current age">
-        </div>
-        
-        <div class="form-group">
-            <label for="income">Annual Income:</label>
-            <input type="number" id="income" placeholder="Enter your annual income">
-        </div>
-        
-        <div class="form-group">
-            <label for="yearsToRetirement">Years until Retirement:</label>
-            <input type="number" id="yearsToRetirement" placeholder="Years until retirement">
-        </div>
-        
-        <div class="form-group">
-            <label for="retirementGoal">Retirement Goal:</label>
-            <input type="number" id="retirementGoal" placeholder="Your retirement goal amount">
-        </div>
-        
-        <div class="form-group">
-            <label for="cagr">Compound Annual Growth Rate (CAGR):</label>
-            <div class="cagr-group">
-                <input type="number" id="cagr" placeholder="CAGR">
-                <span>%</span>
-                <select id="riskProfile">
-                    <option value="">Select Risk Profile</option>
-                    <option value="conservative">Conservative (3-4%)</option>
-                    <option value="moderate">Moderate (5-6%)</option>
-                    <option value="aggressive">Aggressive (7-8%)</option>
-                    <option value="custom">Custom</option>
-                </select>
+        <form id="personalInfoForm">
+            <div class="form-group">
+                <label for="age">Current Age:</label>
+                <input type="number" id="age" placeholder="Enter your current age" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="income">Annual Income:</label>
+                <input type="number" id="income" placeholder="Enter your annual income" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="yearsToRetirement">Years until Retirement:</label>
+                <input type="number" id="yearsToRetirement" placeholder="Years until retirement" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="retirementGoal">Retirement Goal ($):</label>
+                <input type="number" id="retirementGoal" placeholder="Your retirement goal amount" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cagr">Compound Annual Growth Rate:</label>
+                <div class="cagr-group">
+                    <input type="number" id="cagr" placeholder="CAGR" required>
+                    <span>%</span>
+                    <select id="riskProfile">
+                        <option value="">Select Risk Profile</option>
+                        <option value="conservative">Conservative (3-4%)</option>
+                        <option value="moderate">Moderate (5-6%)</option>
+                        <option value="aggressive">Aggressive (7-8%)</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="monthlySaving">Current Monthly Saving ($):</label>
+                <input type="number" id="monthlySaving" placeholder="Monthly savings amount" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="initialInvestment">Initial Investment ($):</label>
+                <input type="number" id="initialInvestment" placeholder="Initial investment amount" required>
+            </div>
+            
+            <button type="submit">Save Information</button>
+        </form>
+    </main>
+
+    <!-- Calculation Results Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="calculation-modal" id="calculationModal">
+        <h3>Retirement Savings Plan</h3>
+        <div class="calculation-results">
+            <div class="result-item">
+                <span class="result-label">Retirement Goal:</span>
+                <span class="result-value" id="modalGoal">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Years to Retirement:</span>
+                <span class="result-value" id="modalYears">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Projected Growth Rate:</span>
+                <span class="result-value" id="modalRate">0%</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Required Annual Savings:</span>
+                <span class="result-value" id="modalAnnual">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Required Monthly Savings:</span>
+                <span class="result-value" id="modalMonthly">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Current Savings vs Required:</span>
+                <span class="result-value" id="modalComparison">$0</span>
             </div>
         </div>
-        
-        <div class="form-group">
-            <label for="monthlySaving">Monthly Saving:</label>
-            <input type="number" id="monthlySaving" placeholder="Monthly savings amount">
-        </div>
-        
-        <div class="form-group">
-            <label for="initialInvestment">Initial Investment:</label>
-            <input type="number" id="initialInvestment" placeholder="Initial investment amount">
-        </div>
-        
-        <button id="saveButton">Save Information</button>
+        <button class="close-modal" id="closeModal">Close</button>
     </div>
 
     <script>
-        // Handle risk profile selection
+        /* Handle risk profile selection*/
         document.getElementById('riskProfile').addEventListener('change', function() {
             const cagrField = document.getElementById('cagr');
             switch(this.value) {
@@ -135,50 +287,121 @@
             }
         });
 
-        // Handle save button click
-        document.getElementById('saveButton').addEventListener('click', function() {
+        /*Handle form submission:When the user submits the form*/
+        document.getElementById('personalInfoForm').addEventListener('submit', function(e) {
+            e.preventDefault(); //prevent page reload
+            
             try {
-                // Get all field values
+                /* Retrieves input values from the form fields*/
                 const age = parseInt(document.getElementById('age').value);
                 const income = parseFloat(document.getElementById('income').value);
                 const yearsToRetirement = parseInt(document.getElementById('yearsToRetirement').value);
                 const retirementGoal = parseFloat(document.getElementById('retirementGoal').value);
-                const cagr = parseFloat(document.getElementById('cagr').value);
+                const cagr = parseFloat(document.getElementById('cagr').value)/100;
                 const monthlySaving = parseFloat(document.getElementById('monthlySaving').value);
                 const initialInvestment = parseFloat(document.getElementById('initialInvestment').value);
                 const riskProfile = document.getElementById('riskProfile').value;
 
-                // Validate inputs
+                /** Validate inputs checking if any value is invalid**/
                 if (isNaN(age) || isNaN(income) || isNaN(yearsToRetirement) || 
                     isNaN(retirementGoal) || isNaN(cagr) || isNaN(monthlySaving) || 
                     isNaN(initialInvestment)) {
                     throw new Error("Please enter valid numbers in all fields");
                 }
 
-                // Show success message
-                alert(`Personal information saved successfully!\nWe'll use a CAGR of ${cagr}% for your projections.`);
+                // Calculate required savings
+                const futureValue = retirementGoal;
+                const presentValue = initialInvestment;
+                const rate = cagr;
+                const periods = yearsToRetirement;
                 
-                // Here you would typically send data to server
-                // sendDataToServer({ age, income, yearsToRetirement, retirementGoal, cagr, monthlySaving, initialInvestment, riskProfile });
+                // Future Value = PV*(1 + r)^n + PMT*[((1 + r)^n - 1)/r]
+                // Solving for PMT (payment):
+                // PMT = (FV - PV*(1 + r)^n) / [((1 + r)^n - 1)/r]
+                
+                const growthFactor = Math.pow(1 + rate, periods);
+                const requiredAnnualSavings = (futureValue - (presentValue * growthFactor)) / 
+                                            ((growthFactor - 1) / rate);
+                
+                const requiredMonthlySavings = requiredAnnualSavings / 12;
+                const currentAnnualSavings = monthlySaving * 12;
+                const difference = currentAnnualSavings - requiredAnnualSavings;
+
+                // Format currency
+                const currencyFormatter = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                // Display results in modal
+                document.getElementById('modalGoal').textContent = currencyFormatter.format(retirementGoal);
+                document.getElementById('modalYears').textContent = yearsToRetirement;
+                document.getElementById('modalRate').textContent = `${(cagr*100).toFixed(2)}%`;
+                document.getElementById('modalAnnual').textContent = currencyFormatter.format(requiredAnnualSavings);
+                document.getElementById('modalMonthly').textContent = currencyFormatter.format(requiredMonthlySavings);
+                
+                if (difference >= 0) {
+                    document.getElementById('modalComparison').textContent = 
+                        `You're saving ${currencyFormatter.format(difference)} more than needed!`;
+                    document.getElementById('modalComparison').style.color = '#4CAF50';
+                } else {
+                    document.getElementById('modalComparison').textContent = 
+                        `You need to save ${currencyFormatter.format(Math.abs(difference))} more annually`;
+                    document.getElementById('modalComparison').style.color = '#f44336';
+                }
+
+                // Show modal
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('calculationModal').style.display = 'block';
+
+                /*Send data to server converting user inputs into JSON format.*/
+                sendDataToServer({ 
+                    age, 
+                    income, 
+                    yearsToRetirement, 
+                    retirementGoal, 
+                    cagr, 
+                    monthlySaving, 
+                    initialInvestment, 
+                    riskProfile 
+                });
 
             } catch (error) {
                 alert(error.message);
             }
         });
 
-        // Function to send data to server (would be implemented with fetch API)
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('calculationModal').style.display = 'none';
+        });
+
+        // Close modal when clicking overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('calculationModal').style.display = 'none';
+        });
+
+        // Function to send data to server
         function sendDataToServer(data) {
             console.log("Data to be sent to server:", data);
-            /* Actual implementation would look like:
             fetch('/api/personal-info', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             })
             .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
-            */
+            .then(data => {
+                console.log('Success:', data);
+                // Redirect or show success message
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error message to user
+            });
         }
     </script>
 </body>
