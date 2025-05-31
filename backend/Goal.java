@@ -5,7 +5,7 @@ public class Goal {
     private double targetAmount;
     private LocalDate targetDate;
     private double currentSavings;
-    private String type; // e.g. "Retirement", "Emergency Fund", "Vacation", etc.
+    private String type; //Example: "Retirement" "Emergency Fund" "Vacation"
 
     public Goal() {}
 
@@ -17,7 +17,7 @@ public class Goal {
         this.type = type;
     }
 
-    // Getters & Setters
+    //Getters & Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
