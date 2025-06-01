@@ -10,7 +10,7 @@ public class DatabaseUtil {
 	public static void connection() {
 		String url ="jdbc:mysql://localhost:3306/plautus_applications";
 		String username="root";
-		String pass = "Psalm46:5pass";
+		String pass = "";
 		
 		/**
 		 * establish a database connection
