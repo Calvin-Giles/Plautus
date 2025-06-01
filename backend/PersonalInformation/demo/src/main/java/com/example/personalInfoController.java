@@ -1,5 +1,4 @@
 package com.example;
-import com.example.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +9,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
+/*
+ * defines a servlet in Java that handles HTTP requests at the /api/personal-info endpoint
+ * This servlet will eventually handle HTTP requests for storing personal information
+ */
 @WebServlet("/api/personal-info")
 public class personalInfoController extends HttpServlet {
     private personalInfoService personalInfoService;
@@ -23,7 +27,10 @@ public class personalInfoController extends HttpServlet {
             throw new ServletException("Failed to initialize PersonalInfoService", e);
         }
     }
-
+/*
+ * doPost: a servlet is responsible for handling POST requests
+ * secure API endpoint for saving user personal information while enforcing authentication
+ */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
