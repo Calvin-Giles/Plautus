@@ -1,14 +1,19 @@
 package com.example;
-//import com.example.PersonalInformation;
 import java.sql.*;
 
+/*
+ * Personal Information Data Access Object (DAO) for handling database operations related to personal information
+ * ensuring personal information is stored efficiently while preventing duplicate entries
+ */
 public class personalInfoDAO {
- private final Connection connection;
+ private final Connection connection;   //Database Connection
 
     public personalInfoDAO(Connection connection) {
         this.connection = connection;
     }
-
+/*
+ * savePersonalInfo: Saving Personal Information
+ */
     public void savePersonalInfo(int userId, PersonalInformation personalInfo) throws SQLException {
         String sql = "INSERT INTO personal_information " +
                      "(user_id, current_age, annual_income, years_until_retirement, " +
