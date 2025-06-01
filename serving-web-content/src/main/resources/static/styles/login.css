@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+  
+body {
+    background: linear-gradient(to bottom, #797979, #f0f0f0);
+    background: linear-gradient(to top, #f0f0f0, #797979);
+    min-height: 100vh;
+    color: black;
+}
+  
+header {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    height: 100px;
+    font-weight: 900;
+}
+  
+/* Main Content */
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;  
+}
+  
+/* Left Panel */
+.side-section {
+    display: flex;
+    flex: 1;
+    gap: 30px;
+}
+  
+.side-img {
+    max-width: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+  
+.side-side {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex: 1;
+}
+  
+.side-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+  
+.side-content p {
+    margin-bottom: 20px;
+}
+  
+.side-content a.button {
+    padding: 12px 20px;
+    border: 2px solid black;
+    border-radius: 25px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+  
+/* Login Box */
+.login-box {
+    width: 250px;
+    height: 50%;
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-left: 40px;
+}
+  
+.login-box h3 {
+    margin-bottom: 20px;
+}
+  
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+}
+  
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+  
+.login-box .signin-btn {
+    background-color: #7d7d7d;
+    color: white;
+    margin-bottom: 10px;
+}
+  
+.login-box a {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    margin: 5px 0 15px;
+    text-decoration: none;
+    color: #005eb8;
+}
+  
