@@ -2,9 +2,12 @@ package com.example;
 import com.example.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.sql.SQLException;
 
+/*
+ * personalInfoService: acts as the service layer between the servlet and the DAO (Data Access Object). 
+ * It ensures validation, logging, and exception handling before interacting with the database
+ */
 public class personalInfoService {
     private static final Logger logger = LoggerFactory.getLogger(personalInfoService.class);
     private final personalInfoDAO personalInfoDAO;
