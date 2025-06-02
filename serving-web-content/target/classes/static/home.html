@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Plutus</title>
+        <link rel="icon" type="image/x-icon" href="images/Logoprototype.ico">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/index.css">
+        
+    </head>
+    <body>
+        <header>
+            <h1>Plautus</h1>
+        </header>
+        <main>
+            <form method="post" id="form">
+                <div class ="home_page">
+                    <h2>Personal Information</h2>
+                    <div class="text_field">
+                        <label>Current Age:</label>
+                        <input type="number" id="age"></input>
+                    </div>
+                        <div class="text_field">
+                            <label>Annual Income:</label>
+                            <input type="text" id="income"></input>
+                        </div>
+                        <div class="text_field">
+                            <label for="years_until_retirement">Years Until Retirement:</label>
+                            <input type="number" id="years_until_retirement" required></input>
+                        </div>
+                        <div class="text_field">
+                            <label for="goal">Retirement Goal:</label>
+                            <input type="number" id="goal" value="$" required></input>
+                        </div>
+                        <div class="text_field">
+                            <label for="CAGR">Compund Annual Growth Rate:</label>
+                            <input type="number" id="CAGR" step="0.01" required></input>
+                        </div>
+                        <button type="submit" id="personal_information">Submit</button>
+                    </div>
+                </form>           
+        </main>
+        <footer>
+            <h3>Temp Links:</h3>
+            <a href="createAccount.html">Create account</a><br>
+            <a href="login.html">Login</a><br>
+            <a href="home.html">home</a><br>
+        </footer>
+        <script src="scripts/background.js"></script>   
+    </body>
+</html>
