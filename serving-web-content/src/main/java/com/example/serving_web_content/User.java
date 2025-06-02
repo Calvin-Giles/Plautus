@@ -40,7 +40,7 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    // Getters and setters
+    //Getters and setters
 
     public Long getId() {
         return id;
