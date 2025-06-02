@@ -1,0 +1,6 @@
+com\example\serving_web_content\ServingWebContentApplication.class
+com\example\serving_web_content\GreetingController.class
+com\example\serving_web_content\UserRepository.class
+com\example\serving_web_content\Goal.class
+com\example\serving_web_content\GoalRepository.class
+com\example\serving_web_content\User.class
