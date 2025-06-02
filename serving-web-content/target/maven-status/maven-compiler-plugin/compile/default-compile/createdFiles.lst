@@ -1,0 +1,5 @@
+com\example\serving_web_content\ServingWebContentApplication.class
+com\example\serving_web_content\GreetingController.class
+com\example\serving_web_content\Goal.class
+com\example\serving_web_content\GoalController.class
+com\example\serving_web_content\GoalRepository.class

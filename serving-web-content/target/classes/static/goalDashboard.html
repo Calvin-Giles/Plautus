@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Plautus | Goal Dashboard</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/createPage.css">
+    <link rel="stylesheet" href="styles/goalDashboard.css">
+</head>
+<body>
+    <header>
+        <h1>Plautus</h1>
+    </header>
+
+    <div class="line1">
+        <nav>
+            <a href="index.html">/Home</a>
+            <a href="goalDashboard.html">/Goal Management</a>
+            <a href="login.html">/login</a>
+        </nav>
+    </div>
+    <div class="line2"><h2>Goal Management</h2></div>
+
+    <main class="main-container">
+        <div class="side-section">
+            <div class="main-content">
+                <h3>Manage Your Goals</h3>
+
+                <br>
+                <h3>Account Information</h3>
+                <form onsubmit="addGoal(event)">
+                    <div class="form-control">
+                        <label for="goalName">Goal Name</label>
+                        <input type="text" id="goalName" name="goalName" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="targetAmount">Target Amount ($)</label>
+                        <input type="number" id="targetAmount" name="targetAmount" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="targetDate">Target Date</label>
+                        <input type="date" id="targetDate" name="targetDate" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="currentSavings">Current Savings ($)</label>
+                        <input type="number" id="currentSavings" name="currentSavings" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="goalType">Goal Type</label>
+                        <select id="goalType" name="goalType">
+                            <option>Retirement</option>
+                            <option>Emergency Fund</option>
+                            <option>Vacation</option>
+                            <option>Home Down Payment</option>
+                            <option>Custom</option>
+                        </select>
+                    </div>
+                    <button type="submit">Add Goal</button>
+                </form>
+            </div>
+
+            <h2>Your Goals</h2>
+            <table class="goal-table" id="goalTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Target</th>
+                        <th>Saved</th>
+                        <th>Date</th>
+                        <th>Progress</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer></footer>
+    <script>
+        const goalTable = document.querySelector("#goalTable tbody");
+
+        //Load goals from backend on page load
+        window.addEventListener("DOMContentLoaded", () => {
+            fetch('http://localhost:8080/api/goals')  
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("Failed to fetch goals");
+                    }
+                    return res.json();
+                })
+                .then(goals => {
+                    goalTable.innerHTML = ""; 
+                    goals.forEach(addGoalRow);
+                })
+                .catch(err => {
+                    console.error("Error loading goals:", err);
+                    alert("Failed to load goals from backend.");
+                });
+        });
+
+        //Handle form submission 
+        function addGoal(event) {
+            event.preventDefault();
+
+            const goal = {
+                name: document.getElementById("goalName").value,
+                type: document.getElementById("goalType").value,
+                targetAmount: parseFloat(document.getElementById("targetAmount").value),
+                targetDate: document.getElementById("targetDate").value,
+                currentSavings: parseFloat(document.getElementById("currentSavings").value)
+            };
+
+            //POST to backend
+            fetch('http://localhost:8080/api/goals', {  
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(goal)
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Failed to add goal");
+                }
+                // Add to table
+                addGoalRow(goal);
+                //reset form
+                event.target.reset();
+            })
+            .catch(err => {
+                console.error("Error adding goal:", err);
+                alert("Failed to add goal to backend.");
+            });
+        }
+
+        //Add goal row 
+        function addGoalRow(goal) {
+            const progress = Math.min((goal.currentSavings / goal.targetAmount) * 100, 100).toFixed(1);
+
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${goal.name}</td>
+                <td>${goal.type}</td>
+                <td>$${goal.targetAmount.toFixed(2)}</td>
+                <td>$${goal.currentSavings.toFixed(2)}</td>
+                <td>${goal.targetDate}</td>
+                <td><progress value="${progress}" max="100"></progress> ${progress}%</td>
+                <td><button onclick="this.closest('tr').remove()">Delete (frontend only)</button></td>
+            `;
+            goalTable.appendChild(row);
+        }
+    </script>
+</body>
+</html>
+
