@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Plautus | Goal Dashboard</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/createPage.css">
+    <link rel="stylesheet" href="styles/goalDashboard.css">
+</head>
+<body>
+    <header class="head">
+        <h1>Plautus</h1>
+        <a href="login.html"><button class="signout-btn">SIGN OUT</button></a>
+    </header>
+
+    <div class="line1">
+        <nav>
+                <a href="home.html">/Home</a>
+                <a href="goalDashboard.html">/Goal Managment</a>
+        </nav>
+    </div>
+    <div class="line2"><h2>Goal Management</h2></div>
+
+    <main class="main-container">
+        <div class="side-section">
+            
+            <div class="main-content">
+                <h3>Manage Your Goals</h3>
+                
+                <br>
+                <h3>Account Information</h3>
+                <form onsubmit="addGoal(event)">
+                    <div class="form-control">
+                        <label for="goalName">Goal Name</label>
+                        <input type="text" id="goalName" name="goalName" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="targetAmount">Target Amount ($)</label>
+                        <input type="number" id="targetAmount" name="targetAmount" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="targetDate">Target Date</label>
+                        <input type="date" id="targetDate" name="targetDate" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="currentSavings">Current Savings ($)</label>
+                        <input type="number" id="currentSavings" name="currentSavings" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="goalType">Goal Type</label>
+                        <select id="goalType" name="goalType">
+                            <option>Retirement</option>
+                            <option>Emergency Fund</option>
+                            <option>Vacation</option>
+                            <option>Home Down Payment</option>
+                            <option>Custom</option>
+                        </select>
+                    </div>
+                    <button type="submit">Add Goal</button>
+                </form>
+                
+            </div>
+            <h2>Your Goals</h2>
+        <table class="goal-table" id="goalTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Target</th>
+                    <th>Saved</th>
+                    <th>Date</th>
+                    <th>Progress</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Goals will appear here -->
+            </tbody>
+        </table>
+        </div>
+    </main>
+    <footer></footer>  
+    <script src="scripts/goals.js"></script>
+</body>
+</html>

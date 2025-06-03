@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+body {
+    background: linear-gradient(to bottom, #797979, #f0f0f0);
+    background: linear-gradient(to top, #f0f0f0, #797979);
+    min-height: 100vh;
+    color: black;
+}
+
+header {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    height: 100px;
+    font-weight: 900;
+}
+
+h1 {
+    padding-left: 3.5%;
+}
+
+aside {
+    width: 180px;
+    height: 350px;
+    float: right;
+    border-right: 2px solid black;
+}
+
+main {
+    color: #f0f0f0;  
+}   
+
+/* Signin Button */
+button {  
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+  
+.signin-btn {
+    background-color: green;
+    color: white;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.signout-btn {
+    background-color: red;
+    color: white;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
