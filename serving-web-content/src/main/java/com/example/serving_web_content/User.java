@@ -1,6 +1,7 @@
 package com.example.serving_web_content;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -8,45 +9,44 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")  // Map to user_id in DB
-    private Long id;
+    @Column(name = "user_id")
+    private Integer userId;
 
-    @Column(nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
-    private String password;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-    public User() {
-    }
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+    @Column(name = "is_admin", nullable = false)
+    private Boolean isAdmin = false;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
+    private LocalDateTime createdAt;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "updated_at", nullable = false, insertable = false)
+    private LocalDateTime updatedAt;
 
-    public String getUsername() {
-        return username;
-    }
+    // Getters and setters
+    public Integer getUserId() { return userId; }
+    public void setUserId(Integer userId) { this.userId = userId; }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public String getPasswordHash() { return passwordHash; }
+    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+
+    public Boolean getIsAdmin() { return isAdmin; }
+    public void setIsAdmin(Boolean isAdmin) { this.isAdmin = isAdmin; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
 }
 

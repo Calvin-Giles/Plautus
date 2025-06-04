@@ -75,30 +75,10 @@ h2 {
 
 /* Nav Bar */
 
-.line1 nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    
-}
-.list1 nav ul a,
-.list1 nav ul a:visited,
-.list1 nav ul a:active {
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    color: white;
-    display: inline-block;
-}
-
-.list1 nav ul a:hover{
-    color: black;
-}
-
-.line1 nav ul li {
-    
+.line1 nav a {
     padding:0;
     margin:0;
+    text-decoration: none;
+    color: white;
     
 }

@@ -4,21 +4,7 @@ main{
     padding: 40px; 
 }
 
-/* Signin Button */
-button {  
-    padding: 10px 24px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-  
-.signin-btn {
-    background-color: #7d7d7d;
-    color: white;
-    margin-bottom: 10px;
-    white-space: nowrap;
-}
+
   
 .head {
     display: flex;
