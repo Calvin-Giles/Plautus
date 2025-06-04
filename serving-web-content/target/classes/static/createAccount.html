@@ -15,7 +15,7 @@
 <body>
     <header class="head">
         <h1 class="title">Plautus</h1>
-        <a href="login.html"><button class="signin-btn">SIGN IN</button></a>
+        <a href="index.html"><button class="signin-btn">SIGN IN</button></a>
     </header>
 
     <div class="line1"><p>Home / Stay on track</p></div>
@@ -69,7 +69,6 @@
 
     <script src="scripts/password.js"></script>
 
-    <!-- Registration POST logic -->
     <script>
     console.log("DEBUG: createAccount.html loaded");
 
@@ -100,7 +99,6 @@
             console.log("DEBUG: fetch response status", response.status);
 
             if (!response.ok) {
-                // Handle HTTP errors
                 const errorText = await response.text();
                 console.error('Error response:', errorText);
                 alert('Error: ' + errorText);
@@ -112,7 +110,7 @@
 
             if (data.success) {
                 alert('Account created successfully');
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
             } else {
                 alert('Error: ' + data.message);
             }
