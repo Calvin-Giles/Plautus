@@ -30,7 +30,7 @@ public class User {
     @Column(name = "updated_at", nullable = false, insertable = false)
     private LocalDateTime updatedAt;
 
-    // Getters and setters
+
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
 

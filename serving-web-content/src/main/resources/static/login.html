@@ -42,7 +42,6 @@
         <a href="index.html">Home</a><br>  
     </footer>
 
-    <!-- LOGIN POST logic -->
     <script>
     console.log("DEBUG: login.html loaded");
 
@@ -67,7 +66,7 @@
 
             if (data.success) {
                 alert('Login successful');
-                window.location.href = 'dashboard.html'; 
+                window.location.href = 'home.html'; 
             } else {
                 const errorElem = document.getElementById('loginError');
                 errorElem.textContent = data.message;

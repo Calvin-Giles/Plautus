@@ -7,7 +7,6 @@ public class UserInfo {
     private int yearsUntilRetirement;
     private double retirementGoal;
 
-    // Getters and Setters
 
     public double getAnnualIncome() {
         return annualIncome;
