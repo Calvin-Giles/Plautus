@@ -58,3 +58,8 @@ button {
     margin-bottom: 10px;
     white-space: nowrap;
 }
+
+.line1 nav a {
+    color: white;
+    text-decoration: none;
+}
