@@ -21,7 +21,7 @@ header {
 
 .line1  {
     background-color: black;
-    width: 1440px; 
+    width: 100%; 
     padding: 12px 20px;
     margin-left: 0px;
     color: white;
